@@ -23,6 +23,6 @@
       "src": "/(.*)",
       "dest": "writoai/wsgi.py"
     }
-  ],
+  ]
 
 }
