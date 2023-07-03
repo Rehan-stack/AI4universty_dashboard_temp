@@ -98,9 +98,9 @@ AUTHENTICATION_BACKENDS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get("ai4university"),
+        'NAME': os.environ.get("postgres"),
         'USER': os.environ.get("postgres"),
-        'PASSWORD': os.environ.get("ahmed.ubuntu,1007"),
+        'PASSWORD': os.environ.get("mc5wwdYDsxnFNaWJ"),
         'HOST': os.environ.get("db.edsucpykdvfgfhqbteav.supabase.co"),
         'PORT': os.environ.get("5432"),
     }
