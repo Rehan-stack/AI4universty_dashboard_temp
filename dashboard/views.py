@@ -14,7 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
-@login_required
+
 def dashboard(request):
     emptyBlogs = []
     completeBlogs = []
