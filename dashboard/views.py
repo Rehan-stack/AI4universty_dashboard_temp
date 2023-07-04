@@ -14,8 +14,36 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
-
+@login_required
 def dashboard(request):
+    emptyBlogs = []
+    completeBlogs = []
+    monthCount = 0
+
+    blogs = Blog.objects.filter(profile=request.user.profile)
+    for blog in blogs:
+        sections = BlogSection.objects.filter(blog=blog)
+        if sections.exists():
+            #calculate the blog words
+            blogWords = 0
+            for section in sections:
+                blogWords += int(section.wordCount)
+                monthCount += int(section.wordCount)
+            blog.wordCount = str(blogWords)
+            blog.save()
+            completeBlogs.append(blog)
+        else:
+            emptyBlogs.append(blog)
+
+
+    context = {}
+    context['numBlogs'] = len(completeBlogs)
+    context['monthCount'] = request.user.profile.monthlyCount #update later
+    context['countReset'] = '12 dec 2022' #update later
+    context['emptyBlogs'] = emptyBlogs
+    context['completeBlogs'] = completeBlogs
+    context['allowance'] =  checkCountAllowance(request.user.profile) ##will also use it to restrict user if not subscribe will not use different functionalities just add {%if not allowance%}{%endif%} on the specific button on template
+
  ##will also use it to restrict user if not subscribe will not use different functionalities just add {%if not allowance%}{%endif%} on the specific button on template
     return render(request,'dashboard/home.html')
 
