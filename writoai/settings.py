@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=zqzjcg)q(1r#z$s2zr!70upq5^%@rv-*7!!@3t8qp229t+u14'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.vercel.app','.now.sh']
 
@@ -98,11 +98,11 @@ AUTHENTICATION_BACKENDS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get("postgres"),
-        'USER': os.environ.get("postgres"),
-        'PASSWORD': os.environ.get("mc5wwdYDsxnFNaWJ"),
-        'HOST': os.environ.get("db.edsucpykdvfgfhqbteav.supabase.co"),
-        'PORT': os.environ.get("5432"),
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'mc5wwdYDsxnFNaWJ',
+        'HOST': 'db.edsucpykdvfgfhqbteav.supabase.co',
+        'PORT': '5432',
     }
 }
 
@@ -160,7 +160,7 @@ DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'PNG': ".png"}
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
