@@ -17,7 +17,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 def dashboard(request):
  ##will also use it to restrict user if not subscribe will not use different functionalities just add {%if not allowance%}{%endif%} on the specific button on template
-    return render(request,'dashboard/home.html',context)
+    return render(request,'dashboard/home.html')
 
 @login_required
 def profile(request):
